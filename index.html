@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <link rel="icon" href="index.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Stanowisko</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            min-width: 180px; /* Minimalna szerokość sidebaru */
+            background-color: #aaa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .sidebar-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%; /* Przyciski zajmą szerokość sidebaru */
+            gap: 15px; /* Odstęp między przyciskami */
+        }
+
+        .sidebar button {
+            flex-grow: 1; /* Przyciski rozciągają się do tej samej szerokości */
+            padding: 12px;
+            border: none;
+            background-color: #888;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            border-radius: 15px; /* Zaokrąglenie przycisków */
+            text-align: center;
+            white-space: nowrap; /* Zapobiega łamaniu tekstu w przyciskach */
+        }
+
+        .sidebar button:hover {
+            background-color: #666;
+        }
+
+        .content {
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .component-section {
+            width: 70%;
+            max-width: 1000px;
+            background-color: #ccc;
+            border-radius: 10px;
+            margin: 30px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            transition: transform 0.3s; /* Dodajemy animację powiększenia dla całej sekcji */
+        }
+
+        .component-container {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            background-color: #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            text-decoration: none;
+            color: black;
+            transition: background-color 0.3s; /* Zmieniamy tylko kolor tła */
+            cursor: pointer;
+        }
+
+        /* Powiększanie tylko kontenera głównego */
+        .component-section:hover {
+            transform: scale(1.01); /* Powiększamy całą sekcję o 1% */
+        }
+
+        .component-image {
+            width: 220px;
+            height: auto;
+            margin-right: 30px;
+        }
+
+        .component-info h2 {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .component-info ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .component-info li {
+            font-size: 1.2em;
+            margin: 6px 0;
+        }
+    </style>
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-buttons">
+            <button onclick="scrollToSection('gpu')">Karta Graficzna</button>
+            <button onclick="scrollToSection('cpu')">Procesor</button>
+            <button onclick="scrollToSection('psu')">Zasilacz</button>
+            <button onclick="scrollToSection('plyta')">Płyta Główna</button>
+            <button onclick="scrollToSection('ram')">Pamięci RAM</button>
+            <button onclick="scrollToSection('dysk')">Dyski SSD</button>
+            <button onclick="scrollToSection('dysk3')">Dyski HDD</button>
+            <button onclick="scrollToSection('cooler')">Chłodzenie CPU</button>
+            <button onclick="scrollToSection('obudowa')">Obudowa</button>
+            <button onclick="scrollToSection('monitor')">Monitor</button>
+            <button onclick="scrollToSection('klawiatura')">Klawiatura</button>
+            <button onclick="scrollToSection('myszka')">Myszka</button>
+            <button onclick="scrollToSection('sluchawki')">Słuchawki</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <section id="gpu" class="component-section">
+            <a href="gpu.html" class="component-container">
+                <img src="gpu.png" alt="GPU" class="component-image">
+                <div class="component-info">
+                    <h2>Inno3D GeForce RTX 4060 Ti Twin X2 OC</h2>
+                    <ul>
+                        <li>8GB VRAM</li>
+                        <li>GDDR6</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="cpu" class="component-section">
+            <a href="cpu.html" class="component-container">
+                <img src="cpu.png" alt="CPU" class="component-image">
+                <div class="component-info">
+                    <h2>Intel Core i7-12700KF</h2>
+                    <ul>
+                        <li>25 MB Cache</li>
+                        <li>12 Rdzeni</li>
+                        <li>20 wątków</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="psu" class="component-section">
+            <a href="psu.html" class="component-container">
+                <img src="psu.png" alt="Zasilacz" class="component-image">
+                <div class="component-info">
+                    <h2>ENDORFY Vero L5</h2>
+                    <ul>
+                        <li>700W</li>
+                        <li>80 Plus Bronze</li>
+                        <li>ATX</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="plyta" class="component-section">
+            <a href="plyta.html" class="component-container">
+                <img src="plyta.png" alt="Płyta Główna" class="component-image">
+                <div class="component-info">
+                    <h2>ASUS PRIME B660-PLUS</h2>
+                    <ul>
+                        <li>ATX</li>
+                        <li>Socket 1700</li>
+                        <li>Intel B660</li>
+                        <li>DDR4</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="ram" class="component-section">
+            <a href="ram.html" class="component-container">
+                <img src="ram.png" alt="Pamięć RAM" class="component-image">
+                <div class="component-info">
+                    <h2>Kingston FURY Beast Black</h2>
+                    <ul>
+                        <li>32GB (2x16GB)</li>
+                        <li>CL 16</li>
+                        <li>DDR4</li>
+                        <li>3200 MHz</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="ram2" class="component-section">
+            <a href="ram2.html" class="component-container">
+                <img src="ram2.png" alt="Pamięć RAM" class="component-image">
+                <div class="component-info">
+                    <h2>ADATA XPG Gammix D10</h2>
+                    <ul>
+                        <li>16GB (2x8GB)</li>
+                        <li>CL 18</li>
+                        <li>DDR4</li>
+                        <li>3600 MHz</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="dysk" class="component-section">
+            <a href="dysk.html" class="component-container">
+                <img src="dysk.png" alt="Dysk SSD" class="component-image">
+                <div class="component-info">
+                    <h2>Kingston KC3000</h2>
+                    <ul>
+                        <li>2048 GB</li>
+                        <li>M.2</li>
+                        <li>PCIe NVMe 4.0 x4</li>
+                        <li>Zapis 7000 MB/s</li>
+                        <li>Odczyt 7000 MB/s</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="dysk2" class="component-section">
+            <a href="dysk2.html" class="component-container">
+                <img src="dysk2.png" alt="Dysk SSD" class="component-image">
+                <div class="component-info">
+                    <h2>ADATA M.2 XPG SX6000 Pro</h2>
+                    <ul>
+                        <li>256 GB</li>
+                        <li>M.2</li>
+                        <li>PCIe NVMe 3.0 x4</li>
+                        <li>Zapis 1200 MB/s</li>
+                        <li>Odczyt 2100 MB/s</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="dysk3" class="component-section">
+            <a href="dysk3.html" class="component-container">
+                <img src="dysk3.png" alt="Dysk HDD" class="component-image">
+                <div class="component-info">
+                    <h2>WD Blue WD20EZAZ 3,5"</h2>
+                    <ul>
+                        <li>2 TB</li>
+                        <li>SATA III</li>
+                        <li>5400 obr./min.</li>
+                        <li>Cache 256 MB</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="dysk4" class="component-section">
+            <a href="dysk4.html" class="component-container">
+                <img src="dysk4.png" alt="Dysk HDD" class="component-image">
+                <div class="component-info">
+                    <h2>Toshiba P300 HDWD110UZSVA 1TB 3.5"</h2>
+                    <ul>
+                        <li>1 TB</li>
+                        <li>SATA III</li>
+                        <li>7200 obr./min.</li>
+                        <li>Cache 64 MB</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="cooler" class="component-section">
+            <a href="cooler.html" class="component-container">
+                <img src="cooler.png" alt="Chłodzenie" class="component-image">
+                <div class="component-info">
+                    <h2>ENDORFY Fera 5 120mm</h2>
+                    <ul>
+                        <li>Wentylatory 1x 120 mm</li>
+                        <li>TDP 220 W</li>
+                        <li>Waga 590 g</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="obudowa" class="component-section">
+            <a href="obudowa.html" class="component-container">
+                <img src="obudowa.png" alt="Obudowa" class="component-image">
+                <div class="component-info">
+                    <h2>KRUX Astral</h2>
+                    <ul>
+                        <li>Middle Tower</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="monitor" class="component-section">
+            <a href="monitor.html" class="component-container">
+                <img src="monitor.png" alt="Monitor" class="component-image">
+                <div class="component-info">
+                    <h2>Lenovo R27q-30</h2>
+                    <ul>
+                        <li>27"</li>
+                        <li>2560 x 1440</li>
+                        <li>165 Hz</li>
+                        <li>IPS</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="klawiatura" class="component-section">
+            <a href="klawiatura.html" class="component-container">
+                <img src="klawiatura.png" alt="Klawiatura" class="component-image">
+                <div class="component-info">
+                    <h2>ENDORFY Thock</h2>
+                    <ul>
+                        <li>Mechaniczne - Kailh Brown</li>
+                        <li>Klawisze numeryczne</li>
+                        <li>Przewodowa USB</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="myszka" class="component-section">
+            <a href="myszka.html" class="component-container">
+                <img src="myszka.png" alt="Myszka" class="component-image">
+                <div class="component-info">
+                    <h2>Razer Cobra</h2>
+                    <ul>
+                        <li>6 Przycisków</li>
+                        <li>Przewodowa USB</li>
+                        <li>8500 dpi</li>
+                        <li>Sensor Optyczny</li>
+                        <li>58 g</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+
+        <section id="sluchawki" class="component-section">
+            <a href="sluchawki.html" class="component-container">
+                <img src="sluchawki.png" alt="Słuchawki" class="component-image">
+                <div class="component-info">
+                    <h2>Razer Kraken V3 X</h2>
+                    <ul>
+                        <li>103 dB</li>
+                        <li>Przewodowe USB</li>
+                    </ul>
+                </div>
+            </a>
+        </section>
+    </div>
+
+</body>
+</html>
